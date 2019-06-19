@@ -14,3 +14,7 @@ References:
 https://dev.to/sahilrajput/install-flask-and-create-your-first-web-application-2dba
 http://timmyreilly.azurewebsites.net/python-flask-windows-development-environment-setup/
 https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
+
+To change env name:
+
+https://stackoverflow.com/questions/43256369/how-to-rename-a-virtualenv-in-python
