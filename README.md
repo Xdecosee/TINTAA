@@ -1,4 +1,6 @@
-# orbitalFlask
+# The INTAA
+
+Tentatively named: TINTAA; The IoT Network Traffic Analyser Application
 
 How to run/start (windows cmd):
 - Note: the virtual env is called 'virtual_env'
