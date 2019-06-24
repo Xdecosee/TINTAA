@@ -10,15 +10,13 @@ How to run/start (windows cmd):
 - View the app via http://127.0.0.1:5000/ or http://localhost:5000/
 
 To implement:
-
-https://www.freecodecamp.org/news/how-to-build-a-web-application-using-flask-and-deploy-it-to-the-cloud-3551c985e492/
+- https://www.freecodecamp.org/news/how-to-build-a-web-application-using-flask-and-deploy-it-to-the-cloud-3551c985e492/
+- Deployment to heroku: https://pythonhow.com/maintaining-your-python-web-app/
 
 References:
-
-https://dev.to/sahilrajput/install-flask-and-create-your-first-web-application-2dba
-http://timmyreilly.azurewebsites.net/python-flask-windows-development-environment-setup/
-https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
+- https://dev.to/sahilrajput/install-flask-and-create-your-first-web-application-2dba
+- http://timmyreilly.azurewebsites.net/python-flask-windows-development-environment-setup/
+- https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
 
 To change env name:
-
-https://stackoverflow.com/questions/43256369/how-to-rename-a-virtualenv-in-python
+- https://stackoverflow.com/questions/43256369/how-to-rename-a-virtualenv-in-python
