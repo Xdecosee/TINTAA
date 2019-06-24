@@ -6,11 +6,11 @@ app = Flask(__name__)
 def home():
 	print ' ** running'
 	return render_template("home.html")
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
 	
-	
-@app.route("/page2")
-def page2():
-    return "Hello, page2"
 
 if __name__ == "__main__":
     app.run(debug=True)

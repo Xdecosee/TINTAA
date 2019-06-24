@@ -1,8 +1,8 @@
 # orbitalFlask
 
 How to run/start (windows cmd):
-- Note: the virtual env is called 'helloworld'
-- Activate the virtual environment by entering: helloworld\Scripts\activate
+- Note: the virtual env is called 'virtual_env'
+- Activate the virtual environment by entering: virtual_env\Scripts\activate
   - CMD should show something like: (venv) $ _
   - the virtual env has a 'local' python, any changes is made to this local venv copy
 - Set the startup file by entering: set FLASK_APP=main.py
