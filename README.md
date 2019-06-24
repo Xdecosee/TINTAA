@@ -1,4 +1,4 @@
-# The INTAA
+# TINTAA
 
 Tentatively named: TINTAA; The IoT Network Traffic Analyser Application
 
