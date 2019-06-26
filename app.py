@@ -27,21 +27,45 @@ except: print " > Database fail"
 
 
 # ===================== Routing ================
-@app.route('/')
+@app.route('/') #Logout redirect page
 def home():
 	print ' > Launching home'
 	return render_template("home.html")
 
-@app.route("/about")
-def about():
-	print ' > Launching about'
-    return render_template("about.html")
+@app.route('/login') 
+def login():
+	print ' > Launching login'
+	return render_template("login.html")
 
+@app.route('/signup') 
+def signup():
+	print ' > Launching signup'
+	return render_template("signup.html")
 
-# TODO: remove
-@app.route("/index2")
-def index2():
-    return render_template("index2.html")
+@app.route('/devices')
+def devices():
+    print ' > Launching devices'
+    return render_template("devices.html")
+
+@app.route('/deviceDetails')
+def deviceDetails():
+    print ' > Launching devices details'
+    return render_template("deviceDetails.html")
+
+@app.route('/archive')
+def archive():
+    print ' > Launching archive'
+    return render_template("archive.html")
+
+@app.route('/reset')
+def reset():
+    print ' > Launching reset page'
+    return render_template("reset.html")
+
+@app.route('/help')
+def help():
+    print ' > Launching help page'
+    return render_template("help.html")
 
 
 if __name__ == "__main__":

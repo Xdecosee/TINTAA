@@ -1,73 +1,97 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+    <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>TINTAA</title>
+        <title>TINTAA</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-grid.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-reboot.css') }}">
 
-</head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
-<body>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-grid.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-reboot.css') }}">
 
-    <div class="wrapper">
-        
-        <!-- Sidebar  -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3>TINTAA</h3>
-            </div>
+    </head>
 
-            <ul class="list-unstyled components">
-                <p>The IoT Network Traffic Analyser Application</p>
-                
-                <li>
-                    <a href="/">Devices</a>
-                </li>
-                <li>
-                    <a href="about">Archives</a>
-                </li>
-                <br>
-                <li>
-                    <a href="/">Logout</a>
-                </li>
+    <body>
 
-            </ul>
+        <div class="wrapper">
             
-            <div id="monitor">
-                <h6>Monitoring Status:</h2>
-                <h4> ON / OFF</h5>
-            </div>
+            <!-- Sidebar  -->
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h3>TINTAA</h3>
+                </div>
 
-        </nav>
+                <ul class="list-unstyled components">
+                    <p>The IoT Network Traffic Analyser Application</p>
+                    
+                    <li>
+                        <a href="devices">Devices</a>
+                    </li>
+                    <li>
+                        <a href="archive">Archive</a>
+                    </li>
 
-        <!-- Page Content  -->
-        <div id="content">
+                    <li>
+                        <a href="#settingsDrop" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Settings</a>
+                        <ul class="collapse list-unstyled" id="settingsDrop">
+                            <li>
+                                <a href="/">Forget/Reset Password</a>
+                            </li>
+                            <li>
+                                <a href="/">Help</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <br>
+                    <li>
+                        <a href="/">Logout</a>
+                    </li>
+
+                </ul>
+                
+                <div id="monitor">
+                    <h6>Monitoring Status:</h2>
+                    <h4> ON / OFF</h5>
+                </div>
+
+            </nav>
+
+            <!-- Page Content  -->
+            <div id="content">
+
+                <!-- TODO: Dynamic page headers-->
 
                 {% block content %}
                 {% endblock %}
+            </div>
 
-    </div>
+        </div>
+        
+        <script src="{{ url_for('static', filename='js/jquery-3.3.1.slim.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#sidebar").mCustomScrollbar({
-                theme: "minimal"
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
+
+                
             });
-
-            
-        });
-    </script>
-</body>
+        </script>
+    </body>
 
 </html>
 

@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <div class="pageHeader"> <!-- TODO: Pull device name from previous page-->
+        <h1>Wifi Plug</h1>
+    </div>
+
+    <div id = "tabDiv">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details" aria-selected="true">Device Details</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="traffic-tab" data-toggle="tab" href="#traffic" role="tab" aria-controls="traffic" aria-selected="false">Traffic Alerts</a>
+            </li>
+        </ul>
+        
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade active show" id="details" role="tabpanel" aria-labelledby="details-tab">
+                <!-- TODO: Add form-->
+                <!-- <form action="/sendForm">-->
+                <br>
+                    <table class="table deviceTable">
+                    <tbody>
+                        <tr>
+                            <td>Name</td>
+                            <td><input type="text" name="name" value="Wifi Plug"></td>
+                        </tr>
+                        <tr>
+                            <td>Vendor</td>
+                            <td><input type="text" name="vendor" value="D-Link"></td>
+                        </tr>
+                        <tr>
+                            <td>IP Address</td>
+                            <td><input type="text" name="ipAddr" value="192.168.0.5" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>MAC Address</td>
+                            <td><input type="text" name="macAddr" value="4E:3A:2B:44:53:C1" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td><input type="text" name="status" value="Up"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <br>
+
+                <div id="ctrlbtnDiv">
+                    <button class="btn btn-primary">Edit</button>
+                    <button class="btn btn-primary">Delete</button>
+                </div>
+
+            </div>
+
+            <div class="tab-pane fade" id="traffic" role="tabpanel" aria-labelledby="traffic-tab">
+                <p>No Traffic Alerts Yet</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('#myTab a[href="#details"]').on('click', function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+        $('#myTab a[href="#traffic"]').on('click', function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+    </script>
+    
+{% endblock %}
