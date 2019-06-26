@@ -1,36 +1,74 @@
 <!DOCTYPE html>
 <html>
-    <head>
-            <title>Flask app</title>
-            <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-            <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
-            <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-grid.css') }}">
-            <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-reboot.css') }}">
-    </head>
-    <body>
-        <header>
-        <div class="container" id="headerDiv">
-            <h1 class="logo">TINTAA</h1>
-            <strong><nav>
-            <ul class="menu">
-                <!--<li><a href="{{ url_for('home') }}">Home</a></li>
-                <li><a href="{{ url_for('about') }}">About</a></li>-->
-                <li><a href="/">Home</a></li>
-                <li><a href="about">About</a></li> 
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>TINTAA</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-grid.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-reboot.css') }}">
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+        
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>TINTAA</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <p>The IoT Network Traffic Analyser Application</p>
                 
+                <li>
+                    <a href="/">Devices</a>
+                </li>
+                <li>
+                    <a href="about">Archives</a>
+                </li>
+                <br>
+                <li>
+                    <a href="/">Logout</a>
+                </li>
+
             </ul>
-            </nav></strong>
-        </div>
-        </header>
+            
+            <div id="monitor">
+                <h6>Monitoring Status:</h2>
+                <h4> ON / OFF</h5>
+            </div>
 
-        <div class="container">
-            {% block content %}
-            {% endblock %}
-        </div>
+        </nav>
 
-    </body>
-    <footer>
-        Copyright © 2019 team1901. 
-            All rights reserved.
-    </footer>
+        <!-- Page Content  -->
+        <div id="content">
+
+                {% block content %}
+                {% endblock %}
+
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            
+        });
+    </script>
+</body>
+
 </html>
+
+<!-- Sidebar layout: https://bootstrapious.com/p/bootstrap-sidebar-->

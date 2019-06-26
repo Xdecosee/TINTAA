@@ -26,17 +26,22 @@ try:
 except: print " > Database fail"
 
 
-
-
 # ===================== Routing ================
 @app.route('/')
 def home():
-	print ' ** running'
+	print ' > Launching home'
 	return render_template("home.html")
 
 @app.route("/about")
 def about():
+	print ' > Launching about'
     return render_template("about.html")
+
+
+# TODO: remove
+@app.route("/index2")
+def index2():
+    return render_template("index2.html")
 
 
 if __name__ == "__main__":
