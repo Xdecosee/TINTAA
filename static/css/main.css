@@ -1,9 +1,14 @@
+body{
+    font-size: 1em;
+    font-weight: 300;
+}
+
 .deviceTable{
     padding: 10px;
 }
 
 
-/* ================= Home page ('/')================ */
+/* ================= Home/Login/Signup page ('/')================ */
 .homeMainDiv {
     background: #107dac;
     height: 100vh;
@@ -21,4 +26,19 @@
 
 .homeContentDiv p{
     color:#fff;
+}
+
+/* =================== General Pages ================= */
+.pageHeader{
+    margin-bottom: 20px;
+}
+
+input {
+    border-radius: 0.25rem !important;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.tabContent{
+    padding-top: 20px;
 }

@@ -1,8 +1,21 @@
 from flask import *
 from flaskext.mysql import MySQL #using pymysql/flask-mysql
 import warnings
+import os
+
+# ==================== Hashing + Salting of password ====================
+from passlib.hash import pbkdf2_sha256 
+# param(password, iterations, saltLen default=16)
+hash = pbkdf2_sha256.encrypt("password", rounds=200000, salt_size=16)
+print pbkdf2_sha256.verify("password", hash)
+# ==================== End ====================
 
 app = Flask(__name__)
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'img/favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 # ===================== DB ===================
 
@@ -26,7 +39,7 @@ try:
 except: print " > Database fail"
 
 
-# ===================== Routing ================
+# ===================== Routing ========================
 @app.route('/') #Logout redirect page
 def home():
 	print ' > Launching home'
@@ -68,5 +81,6 @@ def help():
     return render_template("help.html")
 
 
+# ===================== End ========================
 if __name__ == "__main__":
     app.run(debug=True)
