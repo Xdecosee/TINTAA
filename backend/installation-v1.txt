@@ -1,0 +1,26 @@
+Lanping.py requirements
+
+1. Scapy Installation
+Website: https://scapy.readthedocs.io/en/latest/installation.html
+Requirements:
+- Python 2.7.X or Python 3.4+
+- NpCap Latest Version - with 802.11 option enabled (Im using 0.995 that comes with Wireshark)
+- Scapy Codes (Click "lastest development version" in the website 
+above under "Windows" section) 
+- Run 'python setup.py install' in scapy-master folder
+
+2. Netaddr
+pip install netaddr
+
+
+
+
+<Ignore this>For Macvendors Development 
+
+{'result': {'address': '1 Infinite Loop,Cupertino  CA  95014,US',
+            'company': 'Apple, Inc.',
+            'country': 'US',
+            'end_hex': '749EAFFFFFFF',
+            'mac_prefix': '74:9E:AF',
+            'start_hex': '749EAF000000',
+            'type': 'MA-L'}}
