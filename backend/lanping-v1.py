@@ -104,7 +104,7 @@ def save_devices(ans_lists):
 
         
 
-if__name__== "__main__":
+if __name__== "__main__" : 
       
         #Get list of subnets gateway is in (CIDR)
         ##TODO: Return value for Empty Gateway Values/Empty subnet_set
