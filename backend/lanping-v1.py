@@ -4,17 +4,27 @@
 AUTHOR: Annette
 PROGRAM DESC: ARP Ping for live devices with Scapy
 
+TODO (Add on):
+Feature 1 - Return value for Empty Set values
 
-EXAMPLE MACVENDORS OUTPUT
+Feature 2 - Decide on background thread for device identification
+- If don't want background thread:
+1. app start 
+2. user click "scan devices" 
+3. get_subnets() 
+4. scan_devices() 
+5. mac_lookup() on each live device => decide on display + saving to db
+6. create sniff() function thread with filter for each live device 
+to do live traffic capture
 
-{'result': {'address': '1 Infinite Loop,Cupertino  CA  95014,US',
-            'company': 'Apple, Inc.',
-            'country': 'US',
-            'end_hex': '749EAFFFFFFF',
-            'mac_prefix': '74:9E:AF',
-            'start_hex': '749EAF000000',
-            'type': 'MA-L'}}
-
+- If converting to a background thread:
+1. app start
+2. user click "monitor on"
+3. get_subnets() 
+4. Background Thread to use 'arping' continuously (send() or sendp() or srploop())
+5. mac_lookup() on each live device => decide on display + saving to db
+5. Create sniff() function tread with filter for each live device to do live
+traffic capture
 '''
 
 
@@ -102,12 +112,10 @@ def save_devices(ans_lists):
                         company = mac_lookup(dev[1].src)
                         print(dev[1].psrc, dev[1].src, company)
 
-        
 
 if __name__== "__main__" : 
       
         #Get list of subnets gateway is in (CIDR)
-        ##TODO: Return value for Empty Gateway Values/Empty subnet_set
         subnet_set = get_subnets()
         #Scan for Live Hosts
         ans_lists = scan_devices(subnet_set)
