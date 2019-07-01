@@ -15,7 +15,8 @@ pip install netaddr
 
 
 
-<Ignore this>For Macvendors Development 
+<Ignore this section>
+For Macvendors Development 
 
 {'result': {'address': '1 Infinite Loop,Cupertino  CA  95014,US',
             'company': 'Apple, Inc.',
@@ -24,3 +25,23 @@ pip install netaddr
             'mac_prefix': '74:9E:AF',
             'start_hex': '749EAF000000',
             'type': 'MA-L'}}
+
+
+TODO 
+- If don't want background thread:
+1. app start 
+2. user click "scan devices" 
+3. get_subnets() 
+4. scan_devices() 
+5. mac_lookup() on each live device => decide on display + saving to db
+6. create sniff() function thread with filter for each live device 
+to do live traffic capture
+
+- If converting to a background thread:
+1. app start
+2. user click "monitor on"
+3. get_subnets() 
+4. Background Thread to use 'arping' continuously (send() or sendp() or srploop())
+5. mac_lookup() on each live device => decide on display + saving to db
+5. Create sniff() function tread with filter for each live device to do live
+traffic capture
