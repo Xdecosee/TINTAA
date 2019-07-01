@@ -60,6 +60,11 @@ def devices():
     print ' > Launching devices'
     return render_template("devices.html")
 
+@app.route('/start')
+def start():
+    print ' > Launching start'
+    return render_template("start.html")
+
 @app.route('/deviceDetails')
 def deviceDetails():
     print ' > Launching devices details'
