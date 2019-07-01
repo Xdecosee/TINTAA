@@ -50,10 +50,10 @@ def login():
 	print ' > Launching login'
 	return render_template("login.html")
 
-@app.route('/signup') 
-def signup():
-	print ' > Launching signup'
-	return render_template("signup.html")
+@app.route('/register') 
+def register():
+	print ' > Launching register'
+	return render_template("register.html")
 
 @app.route('/devices')
 def devices():
