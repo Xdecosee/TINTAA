@@ -14,7 +14,7 @@ import requests
 
 
 '''
-Return: Gateway ip address from 0.0.0.0 network address 
+Return: Gateway ip address from default route 0.0.0.0/0
 and network mask entry in routing table
 
 E.g.
