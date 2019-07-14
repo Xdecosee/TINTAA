@@ -2,13 +2,7 @@
 
 Tentatively named: TINTAA; The IoT Network Traffic Analyser Application
 
-## What it is
-TINTAA is a Windows Python-based app with the intention of being able to analyse network device traffic
-
-## Installation Requirements
-Python 2 or 3
-
-## How to run/start (windows cmd):
+How to run/start (windows cmd):
 - Note: the virtual env is called 'virtual_env'
 - Change dir to correct directory
 - Activate the virtual environment by entering: virtual_env\Scripts\activate
@@ -21,7 +15,6 @@ Python 2 or 3
 To implement:
 - https://www.freecodecamp.org/news/how-to-build-a-web-application-using-flask-and-deploy-it-to-the-cloud-3551c985e492/
 - Deployment to heroku: https://pythonhow.com/maintaining-your-python-web-app/
-- further updates to the README: include pre-requisites for application (i.e. what needs to be installed, etc).
 
 References:
 - https://dev.to/sahilrajput/install-flask-and-create-your-first-web-application-2dba
