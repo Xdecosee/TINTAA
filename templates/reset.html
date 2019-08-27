@@ -1,8 +1,42 @@
+<!-- Reset password-->
 {% extends "layout.html" %}
 {% block content %}
 
 <div class="pageHeader">
-    <h1>Forgot/Reset Password</h1>
+    <h1>Reset Password</h1>
 </div>
+
+<table class="table">
+    <form action="/resetForm" method="POST">
+    
+        <tfoot>
+            <tr>
+                <td colspan="2">
+                        <div id = "changePwdDiv">
+                            <input class="btn btn-primary deviceDetails" name="submitReset" type="submit" value="Change Password">
+                        </div>
+                </td>
+            </tr>
+        </tfoot>
+    
+        <tbody>
+            <tr>
+                <td>Old Password: </td>
+                <td><input type="password" name="oldPwd" placeholder="Old password"></td>
+            </tr>
+            <tr>
+                <td>New Password: </td>
+                <td><input type="password" name="newPwd" placeholder="New password"></td>
+            </tr>
+            <tr>
+                <td>Confirm New Password: </td>
+                <td><input type="password" name="confirmPwd" placeholder="Confirm password"></td>
+            </tr>
+        </tbody>
+    </form>
+
+</table>
+
+
 
 {% endblock %}

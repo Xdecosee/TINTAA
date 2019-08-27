@@ -1,3 +1,4 @@
+<!-- Login page-->
 <!DOCTYPE html>
 <html>
 
@@ -25,21 +26,25 @@
             <div class="rounded homeContentDiv">
                 <h1>TINTAA</h1>
                 <p>The Iot Network Traffic Analyser Application</p>
-
+            
                 <div>
-                    <table class="table">
-                        <tr>
-                            <td>Username</td>
-                            <td><input type="text">
-                        </tr>
-                        <tr>
-                            <td>Password</td>
-                            <td><input type="password">
-                        </tr>
-                    </table>
+                    <form action="/login" method="POST">
+                        <table class="table">
+                            <tr>
+                                <td>Username</td>
+                                <td><input type="text" name="username">
+                            </tr>
+                            <tr>
+                                <td>Password</td>
+                                <td><input type="password" name="password">
+                            </tr>
+                        </table>
 
-                    <a class="btn btn-primary deviceDetails" href="start" role="button">Login</a>
-                    
+                        <!--<a class="btn btn-primary deviceDetails" href="start" role="">Login</a>-->
+                        <input class="btn btn-primary deviceDetails" name="submitLogin" type="submit" value="Login">
+
+                        <div hidden style="color: red" display="none">Wrong password. Please try again</div>
+                    </form>
                 </div>
             </div>
 
