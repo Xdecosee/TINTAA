@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 '''
 AUTHOR: Annette
 PROGRAM DESC: Identify Module for device discovery

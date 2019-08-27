@@ -1,0 +1,139 @@
+Format of Results:
+Source IP -> Destination IP
+HTTP HEADER/DATA
+
+########## LOCALHOST CAPTURE (MANAGED TO CAPTURE HTTP SUBMITTED DATA - admin and password values) ##############
+192.168.1.10 -> 204.15.135.8
+
+'GET /login HTTP/1.1
+Host: testing-ground.scraping.pro
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Referer: http://testing-ground.scraping.pro/login?mode=welcome
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: tdsess=TEST_DRIVE_SESSION
+
+'
+***************************************************
+192.168.1.10 -> 204.15.135.8
+
+'POST /login?mode=login HTTP/1.1
+Host: testing-ground.scraping.pro
+Connection: keep-alive
+Content-Length: 19
+Cache-Control: max-age=0
+Origin: http://testing-ground.scraping.pro
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Referer: http://testing-ground.scraping.pro/login
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+
+usr=admin&pwd=12345'
+***************************************************
+192.168.1.10 -> 204.15.135.8
+
+'GET /login?mode=welcome HTTP/1.1
+Host: testing-ground.scraping.pro
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Referer: http://testing-ground.scraping.pro/login
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: tdsess=TEST_DRIVE_SESSION
+
+'
+***************************************************
+192.168.1.10 -> 204.15.135.8
+
+'GET /login HTTP/1.1
+Host: testing-ground.scraping.pro
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Referer: http://testing-ground.scraping.pro/login?mode=welcome
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: tdsess=TEST_DRIVE_SESSION
+
+'
+***************************************************
+192.168.1.10 -> 204.15.135.8
+
+'POST /login?mode=login HTTP/1.1
+Host: testing-ground.scraping.pro
+Connection: keep-alive
+Content-Length: 20
+Cache-Control: max-age=0
+Origin: http://testing-ground.scraping.pro
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Referer: http://testing-ground.scraping.pro/login
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+
+usr=test&pwd=orbital'
+***************************************************
+
+
+
+
+############### WINDOWS HOTSPOT CAPTURE (Connecting iphone to windows laptop hotspot)################################
+192.168.137.164 -> 204.15.135.8
+
+'GET /login HTTP/1.1
+Host: testing-ground.scraping.pro
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 12_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.1 Mobile/15E148 Safari/604.1
+Referer: http://testing-ground.scraping.pro/login?mode=login
+Accept-Language: en-sg
+Accept-Encoding: gzip, deflate
+
+'
+***************************************************
+192.168.137.164 -> 204.15.135.8
+
+'POST /login?mode=login HTTP/1.1
+Host: testing-ground.scraping.pro
+Origin: http://testing-ground.scraping.pro
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 12_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.1 Mobile/15E148 Safari/604.1
+Referer: http://testing-ground.scraping.pro/login
+Content-Length: 19
+Accept-Language: en-sg
+
+'
+***************************************************
+192.168.137.164 -> 204.15.135.8
+
+'GET /login?mode=welcome HTTP/1.1
+Host: testing-ground.scraping.pro
+Origin: http://testing-ground.scraping.pro
+Cookie: tdsess=TEST_DRIVE_SESSION
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 12_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.1 Mobile/15E148 Safari/604.1
+Referer: http://testing-ground.scraping.pro/login
+Accept-Encoding: gzip, deflate
+Accept-Language: en-sg
+
+'
+***************************************************

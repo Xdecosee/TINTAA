@@ -1,0 +1,12 @@
+Begin emission:
+**Finished sending 256 packets.
+*
+Received 3 packets, got 3 answers, remaining 253 packets
+  c8:1e:e7:14:49:21 Apple    192.168.1.9
+  e8:2a:ea:68:08:3f IntelCor 192.168.1.8
+  78:dd:12:c9:c1:14 Arcadyan 192.168.1.254
+
+####THIS ARE THE RESULTS TO PUT ON FRONTEND (IP, MAC ADDRESS, COMPANY)#####
+('192.168.1.9', 'c8:1e:e7:14:49:21', 'Apple, Inc.')
+('192.168.1.254', '78:dd:12:c9:c1:14', 'Arcadyan Corporation')
+('192.168.1.8', 'e8:2a:ea:68:08:3f', 'Intel Corporate')
