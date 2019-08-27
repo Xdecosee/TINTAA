@@ -10,9 +10,11 @@
             <li class="nav-item">
                 <a class="nav-link active" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details" aria-selected="true">Device Details</a>
             </li>
+
             <li class="nav-item">
-                <a class="nav-link" id="traffic-tab" data-toggle="tab" href="#traffic" role="tab" aria-controls="traffic" aria-selected="false">Traffic Alerts</a>
+                <a class="nav-link" id="traffic-tab" data-toggle="tab" href="#traffic" role="tab" aria-controls="traffic" aria-selected="false">Traffic Statistics</a>
             </li>
+
         </ul>
         
         <div class="tab-content tabContent">
@@ -23,8 +25,13 @@
                     <table class="table deviceTable">
                     <tbody>
                         <tr>
-                            <td>Name</td>
-                            <td><input type="text" name="name" value="Wifi Plug"></td>
+                        <!--    <form action="/update" method="POST">-->
+                                <td>Name</td>
+                                <td>
+                                    <input type="text" name="deviceName" value="Wifi Plug">
+                                    <input class="btn btn-primary deviceDetails" name="editName" type="submit" value="Edit" style="margin-left: 10px">
+                                </td>
+                        <!--    </form>-->
                         </tr>
                         <tr>
                             <td>Vendor</td>
@@ -38,26 +45,19 @@
                             <td>MAC Address</td>
                             <td>4E:3A:2B:44:53:C1</td>
                         </tr>
-                        <tr>
-                            <td>Status</td>
-                            <td>Up</td>
-                        </tr>
                     </tbody>
                 </table>
 
                 <br>
 
-                <div id="ctrlbtnDiv">
-                    <button class="btn btn-primary">Edit</button>
-                    <button class="btn btn-primary">Delete</button>
-                </div>
+                    
 
             </div>
 
-            <!--
+            
             <div class="tab-pane fade" id="traffic" role="tabpanel" aria-labelledby="traffic-tab">
-                <p>No Traffic Alerts Yet</p>
-            </div>-->
+                <p>Statistics</p>
+            </div>
         </div>
     </div>
 
