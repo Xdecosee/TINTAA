@@ -11,6 +11,7 @@ Python 2 or 3
 ## How to run/start (windows cmd):
 - Note: the virtual env is called 'virtual_env'
 - Change dir to correct directory
+- Install requirements by running 'pip install -r require.txt'
 - Activate the virtual environment by entering: virtual_env\Scripts\activate
   - CMD should show something like: (venv) $ _
   - the virtual env has a 'local' python, any changes is made to this local venv copy
