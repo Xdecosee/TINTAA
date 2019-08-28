@@ -1,3 +1,4 @@
+<!-- List devices-->
 {% extends "layout.html" %}
 {% block content %}
 
@@ -30,12 +31,17 @@
             </tr>
         </tfoot>
 
+    <!--    <tbody>
+            {% for item in my_list %}
+                <tr><td>{{item}}</td></tr>
+            {% endfor %}
+        </tbody>
+    -->
+
         <tbody>
             <tr>
                 <td>Wifi Plug</td>
                 <td>D-Link</td>
-                <!-- <a class="btn btn-primary deviceDetails" href="deviceDetails" role="button">Link</a> -->
-                <!-- <td><button class="btn btn-primary deviceDetails">More details</button></td> -->
                 <td><a class="btn btn-primary deviceDetails" href="deviceDetails" role="button">More details</a></td>
             </tr>
             <tr>
@@ -49,7 +55,7 @@
                 <td><a class="btn btn-primary deviceDetails" href="deviceDetails" role="button">More details</a></td>
             </tr>
         </tbody>
-
+    
     </table>
 
 </div>

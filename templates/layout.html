@@ -1,3 +1,4 @@
+<!-- Master layout page (sidebar)-->
 <!DOCTYPE html>
 <html>
 
@@ -34,21 +35,26 @@
                     <li>
                         <a href="devices">Devices</a>
                     </li>
+
                     <li>
-                        <a href="archive">Archive</a>
+                        <a href="reset">Reset Password</a>
                     </li>
 
                     <li>
+                        <a href="help">Help</a>
+                    </li>
+
+                    <!--<li>
                         <a href="#settingsDrop" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Settings</a>
                         <ul class="collapse list-unstyled" id="settingsDrop">
                             <li>
-                                <a href="reset">Forget/Reset Password</a>
+                                <a href="reset">Reset Password</a>
                             </li>
                             <li>
                                 <a href="help">Help</a>
                             </li>
                         </ul>
-                    </li>
+                    </li>-->
 
                     <br>
                     <li>
@@ -59,15 +65,13 @@
                 
                 <div id="monitor">
                     <h6>Monitoring Status:</h2>
-                    <h4>ON</h5>
+                    <h4 id="status">ON</h5> <!--TODO: dynamic on/off-->
                 </div>
 
             </nav>
 
             <!-- Page Content  -->
             <div id="content">
-
-                <!-- TODO: Dynamic page headers-->
 
                 {% block content %}
                 {% endblock %}

@@ -7,7 +7,7 @@ import os
 from passlib.hash import pbkdf2_sha256 
 # param(password, iterations, saltLen default=16)
 hash = pbkdf2_sha256.encrypt("password", rounds=200000, salt_size=16)
-print pbkdf2_sha256.verify("password", hash)
+#print pbkdf2_sha256.verify("password", hash)
 # ==================== End ====================
 
 app = Flask(__name__)
@@ -28,57 +28,136 @@ try:
     app.config['MYSQL_DATABASE_HOST'] = 'localhost'
     mysql.init_app(app)
 
+
+    global conn
+    global cursor
+
     conn = mysql.connect()
     cursor =conn.cursor()
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
-        cursor.execute("CREATE DATABASE IF NOT EXISTS tinta_db")
+
+        cursor.execute("CREATE DATABASE IF NOT EXISTS tintaa_db;")
+        cursor.execute("use tintaa_db")
+
+        #username = "admin"
+        #password = pbkdf2_sha256.encrypt("tintaaP@ss", rounds=200000, salt_size=16)
+
+
+        cursor.execute("CREATE TABLE IF NOT EXISTS User (userID INT NOT NULL AUTO_INCREMENT, userName VARCHAR(5) NOT NULL, userPass VARCHAR(16) NOT NULL,PRIMARY KEY (userID) );")
+
+        cursor.execute("INSERT IGNORE INTO User (userID, userName, userPass) VALUES (1, 'admin', 'tintaaP@ss');")
+
+        #cursor.execute("CREATE TABLE IF NOT EXISTS Traffic")
+
+        conn.commit()
     
-    #data = cursor.fetchone()
     print " > Database success"
 except: print " > Database fail"
 
 
 # ===================== Routing ========================
+#@app.route('/', methods=['GET', 'POST']) #Logout redirect page
+
 @app.route('/') #Logout redirect page
-def home():
-	print ' > Launching home'
-	return render_template("home.html")
+def startup():
+    print ' > Launching startup'
+    return render_template("login.html")
 
-@app.route('/login') 
+@app.route('/login', methods=['POST'])
 def login():
-	print ' > Launching login'
-	return render_template("login.html")
+    print ' > Verifying user'
 
-@app.route('/register') 
-def register():
-	print ' > Launching register'
-	return render_template("register.html")
+    #name = request.form['inputName']
+    details = request.form
+    username = details['username']
+    password = details['password']
+    
+    cursor.execute("SELECT userPass FROM User WHERE (userName LIKE \"%s\")" % username )
+    dbResult = cursor.fetchone()
 
-@app.route('/devices')
-def devices():
-    print ' > Launching devices'
-    return render_template("devices.html")
+    if (dbResult is None):
+        print ' > Wrong username'
+        return render_template("login.html")
+
+    else:
+        retrievedPwd = dbResult[0]
+
+        if (password==retrievedPwd):
+            print " > User matched"
+            return render_template("start.html")
+        
+        else:
+            return render_template("login.html")
 
 @app.route('/start')
 def start():
     print ' > Launching start'
     return render_template("start.html")
 
+@app.route('/devices')
+def devices():
+    print ' > Launching devices'
+
+    #cursor.execute("SELECT DISTINCT deviceName from Devices")
+
+    return render_template("devices.html")
+    #return render_template("devices.html", my_list=range(10))
+
+
 @app.route('/deviceDetails')
 def deviceDetails():
     print ' > Launching devices details'
     return render_template("deviceDetails.html")
 
-@app.route('/archive')
-def archive():
-    print ' > Launching archive'
-    return render_template("archive.html")
+@app.route('/update', methods=['POST'])
+def update():
+    print ' > Updating device name'
+
+    details = request.form
+    newName = details['deviceName']
+    
+    cursor.execute("SELECT deviceName FROM Traffic WHERE (deviceName LIKE \"%s\")" % newName )
+    dbResult = cursor.fetchall()
+
+    #oldName = temp TODO
+    
+    cursor.execute("""UPDATE Traffic SET deviceName=%s WHERE deviceName = %s""", ( newName, oldName ))
+    conn.commit()
 
 @app.route('/reset')
 def reset():
     print ' > Launching reset page'
     return render_template("reset.html")
+
+@app.route('/resetForm', methods=['POST'])
+def resetForm():
+    #name = request.form['inputName']
+    details = request.form
+    oldPwd = details['oldPwd']
+    newPwd = details['newPwd']
+    confirmPwd = details['confirmPwd']
+
+    cursor.execute("SELECT userPass FROM User WHERE (userName = 'admin')" )
+    dbResult = cursor.fetchone()
+
+    retrievedPwd = dbResult[0]
+
+    if (oldPwd==retrievedPwd):
+        print " > Old password matched"
+
+        if (newPwd == confirmPwd):
+            print " > Changing password"
+            cursor.execute("""UPDATE User SET userPass=%s WHERE userName = 'admin'""", ( newPwd ))
+            conn.commit()
+            return render_template("reset.html")
+        else:
+            " > New password no match"
+            return render_template("reset.html")
+    else:
+        print " > Old password no match"
+        return render_template("reset.html")
+
 
 @app.route('/help')
 def help():
