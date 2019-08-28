@@ -1,0 +1,48 @@
+<!-- List devices-->
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="pageHeader">
+    <h1>Capture Traffic </h1>
+</div>
+
+
+
+<div id = "startBtnDiv">
+
+    <form action="/capture" method="POST">
+        <button class="btn btn-primary deviceDetails" name="capturetraffic" type="submit">Capture Traffic</button>
+    </form>
+    
+</div>
+
+<br>
+
+<div id="infoDiv"> <!-- TODO: Make dynamic table-->
+    
+    <table class="table">
+       
+            <th> 
+                <tr>     
+                    <td>Source Ip</td> 
+                    <td>Dest Ip </td> 
+                    <td>Packet</td> 
+                </tr> 
+            </th> 
+           
+            {%for i in range(0, len)%} 
+              
+            <!-- table rows -->
+            <tr> 
+                <td>{{Src[i]}}</td> 
+                <td>{{Dst[i]}}</td> 
+                <td>{{Packet[i]}}</td> 
+                
+            {%endfor%} 
+              
+            </tr> 
+    </table>
+
+</div>
+
+{% endblock %}

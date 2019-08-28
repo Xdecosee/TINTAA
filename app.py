@@ -1,14 +1,9 @@
 from flask import *
+import identify
+import capturetraffic
 from flaskext.mysql import MySQL #using pymysql/flask-mysql
 import warnings
 import os
-
-# ==================== Hashing + Salting of password ====================
-from passlib.hash import pbkdf2_sha256 
-# param(password, iterations, saltLen default=16)
-hash = pbkdf2_sha256.encrypt("password", rounds=200000, salt_size=16)
-#print pbkdf2_sha256.verify("password", hash)
-# ==================== End ====================
 
 app = Flask(__name__)
 
@@ -17,102 +12,65 @@ def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'img/favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-# ===================== DB ===================
-
-
-try:
-    mysql = MySQL()
-    app.config['MYSQL_DATABASE_USER'] = 'root'
-    app.config['MYSQL_DATABASE_PASSWORD'] = 'p@ssw0rd'
-    #app.config['MYSQL_DATABASE_DB'] = ''
-    app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-    mysql.init_app(app)
-
-
-    global conn
-    global cursor
-
-    conn = mysql.connect()
-    cursor =conn.cursor()
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore")
-
-        cursor.execute("CREATE DATABASE IF NOT EXISTS tintaa_db;")
-        cursor.execute("use tintaa_db")
-
-        #username = "admin"
-        #password = pbkdf2_sha256.encrypt("tintaaP@ss", rounds=200000, salt_size=16)
-
-
-        cursor.execute("CREATE TABLE IF NOT EXISTS User (userID INT NOT NULL AUTO_INCREMENT, userName VARCHAR(5) NOT NULL, userPass VARCHAR(16) NOT NULL,PRIMARY KEY (userID) );")
-
-        cursor.execute("INSERT IGNORE INTO User (userID, userName, userPass) VALUES (1, 'admin', 'tintaaP@ss');")
-
-        #cursor.execute("CREATE TABLE IF NOT EXISTS Traffic")
-
-        conn.commit()
-    
-    print " > Database success"
-except: print " > Database fail"
-
-
-# ===================== Routing ========================
-#@app.route('/', methods=['GET', 'POST']) #Logout redirect page
 
 @app.route('/') #Logout redirect page
 def startup():
-    print ' > Launching startup'
+    print(' > Launching startup')
     return render_template("login.html")
 
 @app.route('/login', methods=['POST'])
 def login():
-    print ' > Verifying user'
+    return render_template("start.html")
 
-    #name = request.form['inputName']
-    details = request.form
-    username = details['username']
-    password = details['password']
-    
-    cursor.execute("SELECT userPass FROM User WHERE (userName LIKE \"%s\")" % username )
-    dbResult = cursor.fetchone()
-
-    if (dbResult is None):
-        print ' > Wrong username'
-        return render_template("login.html")
-
-    else:
-        retrievedPwd = dbResult[0]
-
-        if (password==retrievedPwd):
-            print " > User matched"
-            return render_template("start.html")
-        
-        else:
-            return render_template("login.html")
 
 @app.route('/start')
 def start():
-    print ' > Launching start'
+    print(' > Launching start')
     return render_template("start.html")
+
 
 @app.route('/devices')
 def devices():
-    print ' > Launching devices'
+    print('Getting Live Devices...')
+    input = "192.168.1.0/24"
+    #input = "192.168.4.1/24"
+    #Scan for Live Hosts 
+    dev_list = identify.scan_devices(input)
+    Ip = []
+    Mac = []
+    Vendor = []
+    for dev in dev_list :
+        Ip.append(dev[0])
+        Mac.append(dev[1])
+        Vendor.append(dev[2])
 
-    #cursor.execute("SELECT DISTINCT deviceName from Devices")
+    return render_template("devices.html", len = len(dev_list), Ip = Ip, Mac = Mac , Vendor = Vendor)
+    
+@app.route('/capture')
+def capture():
+    print('Starting Capture.... (Up to 10 Packets)')
+    packetlist = capturetraffic.startcapture()
+    Src = []
+    Dst = []
+    Packet = []
+    for p in packetlist:
+        Src.append(p[0])
+        Dst.append(p[1])
+        Packet.append(p[2])
 
-    return render_template("devices.html")
-    #return render_template("devices.html", my_list=range(10))
-
+    return render_template("capture.html" , len = len(packetlist), Src = Src, Dst = Dst , Packet = Packet)
 
 @app.route('/deviceDetails')
 def deviceDetails():
-    print ' > Launching devices details'
+    print(' > Launching devices details')
     return render_template("deviceDetails.html")
+
+
+
 
 @app.route('/update', methods=['POST'])
 def update():
-    print ' > Updating device name'
+    print(' > Updating device name')
 
     details = request.form
     newName = details['deviceName']
@@ -125,9 +83,14 @@ def update():
     cursor.execute("""UPDATE Traffic SET deviceName=%s WHERE deviceName = %s""", ( newName, oldName ))
     conn.commit()
 
+
+
+
+
+
 @app.route('/reset')
 def reset():
-    print ' > Launching reset page'
+    print(' > Launching reset page')
     return render_template("reset.html")
 
 @app.route('/resetForm', methods=['POST'])
@@ -144,10 +107,10 @@ def resetForm():
     retrievedPwd = dbResult[0]
 
     if (oldPwd==retrievedPwd):
-        print " > Old password matched"
+        print(" > Old password matched")
 
         if (newPwd == confirmPwd):
-            print " > Changing password"
+            print(" > Changing password")
             cursor.execute("""UPDATE User SET userPass=%s WHERE userName = 'admin'""", ( newPwd ))
             conn.commit()
             return render_template("reset.html")
@@ -155,16 +118,17 @@ def resetForm():
             " > New password no match"
             return render_template("reset.html")
     else:
-        print " > Old password no match"
+        print(" > Old password no match")
         return render_template("reset.html")
 
 
 @app.route('/help')
 def help():
-    print ' > Launching help page'
+    print(' > Launching help page')
     return render_template("help.html")
 
 
 # ===================== End ========================
 if __name__ == "__main__":
     app.run(debug=True)
+    

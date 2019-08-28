@@ -6,8 +6,14 @@
     <h1>Devices</h1>
 </div>
 
+
+
 <div id = "startBtnDiv">
-    <a class="btn btn-primary deviceDetails" href="start" role="button">Stop  Traffic Monitor</a>
+
+    <form action="/devices" method="POST">
+        <button class="btn btn-primary deviceDetails" name="discoverDevice" type="submit">Discover Devices</button>
+    </form>
+    
     
 </div>
 
@@ -15,47 +21,30 @@
 
 <div id="infoDiv"> <!-- TODO: Make dynamic table-->
     <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Vendor</th>
-                <th>&nbsp;</th>
-            </tr>
-        </thead>
+       
+            <th> 
+                <tr>     
+                    <td>No.</td>
+                    <td>Device Ip</td> 
+                    <td>Device MAC Address</td> 
+                    <td>Device Vendor</td> 
+                </tr> 
+            </th> 
+                  
+            <!-- For loop logic of jinja template -->
+            {%for i in range(0, len)%} 
+              
+            <!-- table rows -->
+            <tr> 
+                <td>{{i + 1}}</td> 
+                <td>{{Ip[i]}}</td> 
+                <td>{{Mac[i]}}</td> 
+                <td>{{Vendor[i]}}</td> 
+                
+            {%endfor%} 
+              
+            </tr> 
 
-        <tfoot>
-            <tr>
-                <td colspan="3">
-                <div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
-                </td>
-            </tr>
-        </tfoot>
-
-    <!--    <tbody>
-            {% for item in my_list %}
-                <tr><td>{{item}}</td></tr>
-            {% endfor %}
-        </tbody>
-    -->
-
-        <tbody>
-            <tr>
-                <td>Wifi Plug</td>
-                <td>D-Link</td>
-                <td><a class="btn btn-primary deviceDetails" href="deviceDetails" role="button">More details</a></td>
-            </tr>
-            <tr>
-                <td>IP Camera</td>
-                <td>Aztech</td>
-                <td><a class="btn btn-primary deviceDetails" href="deviceDetails" role="button">More details</a></td>
-            </tr>
-            <tr>
-                <td>Vacuum Cleaner</td>
-                <td>iRobot</td>
-                <td><a class="btn btn-primary deviceDetails" href="deviceDetails" role="button">More details</a></td>
-            </tr>
-        </tbody>
-    
     </table>
 
 </div>
